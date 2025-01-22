@@ -31,7 +31,7 @@ function Login() {
 
         login(username, password).then(
             () => {
-                navigate("/GuildSelect");
+                navigate("/Guild/Select");
             },
             (error) => {
                 const resMessage =

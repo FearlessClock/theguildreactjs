@@ -37,7 +37,7 @@ function Register() {
 
         register(name, username, email, password).then(
             () => {
-                navigate("/Guild/Create");
+                navigate("/Login");
             },
             (error) => {
                 const resMessage =
