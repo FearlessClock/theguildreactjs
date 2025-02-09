@@ -1,11 +1,22 @@
-import {Box, Paper} from "@mui/material";
+import {Box, Paper, Stack} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import {Cart} from "../../Types/Cart.ts";
+import ItemInformation from "./ItemInformation.tsx";
+import {ItemInformationType} from "../../Types/ItemInformationType.ts";
 
-function CartsInformation(props) {
+function CartsInformation(props : any) {
+
+    var items = props.cartInformation.carried_items.map((item: ItemInformationType) => {
+        return (<ItemInformation key={item.id} storageType={item}/>)
+    })
+
     return (
-        <Paper className="w-full min-h-32 flex flex-grow">
-            <Typography variant="body2" color="textSecondary" align={"center"}>{props.cartInformation.name}</Typography>
+        <Paper elevation={8} className="min-h-32 flex flex-col flex-grow m-4 justify-top">
+            <Typography variant="h6" color="textSecondary">{props.cartInformation.name}</Typography>
+            <Stack direction="column" spacing={2}>
+                <Box>
+                    {items}
+                </Box>
+            </Stack>
         </Paper>
     )
 }
